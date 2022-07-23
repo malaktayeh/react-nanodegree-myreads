@@ -11,10 +11,12 @@ import * as BooksAPI from "./BooksAPI";
 function App() {
   const [books, setBooks] = useState([]);
 
+  console.log(books)
   useEffect(() => {
     const getBooks = async () => {
       const res = await BooksAPI.getAll();
       setBooks(res);
+      console.log(books)
     };
 
     getBooks();
