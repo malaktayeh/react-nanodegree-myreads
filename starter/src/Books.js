@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import BookDropdown from "./BookDropdown";
 
-const Books = ({ book }) => {
+const Books = ({ book, change }) => {
     return(
         <>
             <li>
@@ -18,7 +19,7 @@ const Books = ({ book }) => {
                             }}
                             ></div>
                         </a>
-                        <BookDropdown />
+                        <BookDropdown book={book} change={change}/>
                     </div>
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">{book.authors.length > 1 ? (book.authors.map(auth => `${auth}. `)) : `${book.authors}.`}</div>
@@ -27,5 +28,10 @@ const Books = ({ book }) => {
         </>
     )
 } 
+
+Books.protoTypes = {
+    book: PropTypes.object,
+    change: PropTypes.func
+  }  
 
 export default Books;

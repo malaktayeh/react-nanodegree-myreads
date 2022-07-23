@@ -1,7 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Books from "./Books";
 
-const Shelves = ({ books }) => {
+const Shelves = ({ books, change }) => {
     return(
         <div className="list-books-content">
           <div className="bookshelf">
@@ -9,7 +10,7 @@ const Shelves = ({ books }) => {
             <div className="bookshelf-books">
               <ol className="books-grid">                    
                 {books.filter(book => book.shelf === "currentlyReading").map(book => 
-                  <Books book={book} />      
+                  <Books book={book} change={change}/>      
                 )}
               </ol>
             </div>
@@ -19,7 +20,7 @@ const Shelves = ({ books }) => {
           <div className="bookshelf-books">
             <ol className="books-grid">
             {books.filter(book => book.shelf === "wantToRead").map(book => 
-                  <Books book={book} />      
+                  <Books book={book} change={change}/>
                 )}
             </ol>
           </div>
@@ -29,13 +30,18 @@ const Shelves = ({ books }) => {
           <div className="bookshelf-books">
             <ol className="books-grid">
             {books.filter(book => book.shelf === "read").map(book => 
-                  <Books book={book} />      
+                  <Books book={book} change={change}/>
                 )}
             </ol>
           </div>
         </div>
       </div>
     )
+}
+
+Shelves.protoTypes = {
+  books: PropTypes.array,
+  change: PropTypes.func
 }
 
 export default Shelves;
