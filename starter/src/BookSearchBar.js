@@ -1,15 +1,16 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import SearchInput from "./SearchInput";
 
-const BookSearchBar = ({ showSearchPage, setShowSearchpage}) => {
+const BookSearchBar = ( props ) => {
     return(
         <div className="search-books-bar">
-            <a
+            <Link
                 className="close-search"
-                onClick={() => setShowSearchpage(!showSearchPage)}
+                to="/"
             >
                 Close
-            </a>
+            </Link>
             <SearchInput />
       </div>
     )
