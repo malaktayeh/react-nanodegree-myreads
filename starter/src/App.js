@@ -1,12 +1,24 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route} from "react-router-dom";
 import Shelves from "./Shelves";
 import AddBookButton from "./AddBookButton";
 import BookSearchBar from "./BookSearchBar";
 import Books from "./Books";
 
+import * as BooksAPI from "./BooksAPI";
+
 function App() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const getBooks = async () => {
+      const res = await BooksAPI.getAll();
+      setBooks(res);
+    };
+
+    getBooks();
+  }, []);
 
   return (
     <div className="app">
@@ -20,7 +32,7 @@ function App() {
               <div className="list-books-title">
                 <h1>MyReads</h1>
               </div>
-              <Shelves books={''}/>
+              <Shelves books={books}/>
               <AddBookButton />
             </div>
         }/>
@@ -39,7 +51,7 @@ function App() {
               </div>
             </div>
         }/>
-        
+
       </Routes>
     </div>
   );
