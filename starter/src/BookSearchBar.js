@@ -19,7 +19,7 @@ const BookSearchBar = ({ searchInput, setSearchInput }) => {
 }
 
 BookSearchBar.propTypes = {
-    searchInput: PropTypes.string.isRequired,
+    searchInput: PropTypes.string,
     setSearchInput: PropTypes.func.isRequired
 }
 

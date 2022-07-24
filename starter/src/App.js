@@ -3,8 +3,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route} from "react-router-dom";
 import Shelves from "./Shelves";
 import AddBookButton from "./AddBookButton";
-import BookSearchBar from "./BookSearchBar";
-// import Books from "./Books";
+import SearchView from "./SearchView";
 
 import * as BooksAPI from "./BooksAPI";
 
@@ -75,17 +74,8 @@ function App() {
           path="/search" 
           element={
             // Show search book view
-            <div className="search-books">
-              <BookSearchBar />
-              <div className="search-books-results">
-                {/* Show result of query */}
-                {/* <Books 
-                  books={''} 
-                /> */}
-              </div>
-            </div>
+            <SearchView change={changeToBooks}/>
         }/>
-
       </Routes>
     </div>
   );

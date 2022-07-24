@@ -8,7 +8,7 @@ const Books = ({ book, change }) => {
             <li>
                 <div className="book">
                     <div className="book-top">
-                        <a target="_blank" href={book.infoLink}>
+                        <a target="_blank" rel="noreferrer" href={book.infoLink ? book.infoLink : ""}>
                             <div
                             className="book-cover"
                             style={{
