@@ -6,6 +6,7 @@ import AddBookButton from "./AddBookButton";
 import SearchView from "./SearchView";
 
 import * as BooksAPI from "./BooksAPI";
+import ShelvesView from "./ShelfView";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -61,13 +62,7 @@ function App() {
           exact path="/" 
           element={
             // Bookshelves view with respective books
-            <div className="list-books">
-              <div className="list-books-title">
-                <h1>MyReads</h1>
-              </div>
-              <Shelves books={books} change={changeToBooks} />
-              <AddBookButton />
-            </div>
+            <ShelvesView books={books} change={changeToBooks} />
         }/>
 
         <Route 
