@@ -24,22 +24,30 @@ const SearchView = ({ change, searchInput, setSearchInput }) => {
                 // else save API data in state
                 else setSearchResults(res);
             } catch (err) {console.log(err.message)}
-        setLoading(false)
         };
-    
-        getBooks();
+
+        if (searchInput !== "") {
+            getBooks();
+        }
+
+        setLoading(false)
     }, [searchInput]);
 
     return(
         <div className="search-books">
             <BookSearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
             <div className="search-books-results">
+                {console.log('input: ' + searchInput)}
                 <ol className="books-grid">         
                     {
                     loading ? 
-                        <p>Loading . . .</p> :
-                        searchResults.length === 0 ? <p>No results found. Try searching for something else.</p> :
-                        searchResults.map(book => <Books book={book} change={change} /> )
+                        <p>Loading . . .</p> 
+                        :
+                        searchResults.length === 0 || searchInput === "" ?
+                            <p>No results found. Try searching for something else.</p> 
+                            :
+                            searchResults.map(book => <Books book={book} change={change} /> )
+
                     }
                     
                 </ol>

@@ -14,6 +14,7 @@ const Books = ({ book, change }) => {
                             width: 128,
                             height: 193,
                             backgroundImage:
+                            book.imageLinks === undefined ?  null :
                             `url("${book.imageLinks.thumbnail}")`,
                         }}
                         ></div>
