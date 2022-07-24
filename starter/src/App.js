@@ -1,17 +1,13 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { Routes, Route} from "react-router-dom";
-import Shelves from "./Shelves";
-import AddBookButton from "./AddBookButton";
+import ShelvesView from "./ShelvesView";
 import SearchView from "./SearchView";
 
 import * as BooksAPI from "./BooksAPI";
-import ShelvesView from "./ShelfView";
 
 function App() {
   const [books, setBooks] = useState([]);
-
-  console.log(books)
 
   // get books on shelves upon first render
   useEffect(() => {
@@ -25,7 +21,6 @@ function App() {
 
   const changeToBooks = (book, newShelf) => {
     // check if this book already is on one of our shelves, or if it a new book that needs to be added
-
     let newBook = book;
     let newBooks = [...books];
     newBook.shelf = newShelf;
@@ -33,10 +28,14 @@ function App() {
     let isBookOnShelf = false;
     let locationIntheBooksArray = 0;
 
-    isBookOnShelf = books.filter(b => {
-      if (book.id === b.id) return true
-      return false;
-    })
+    for (let i = 0, l = books.length; i < l; i++) {
+        if (book.id === books[i].id) {
+          isBookOnShelf = true;
+          break;
+        }
+    }
+    
+    console.log(isBookOnShelf)
 
     // book on shelf -> change shelf to selected shelf
     if (isBookOnShelf) {
@@ -52,6 +51,7 @@ function App() {
       newBooks.push(newBook);
       setBooks(newBooks);
     }
+    console.log(books)
   }
 
   return (

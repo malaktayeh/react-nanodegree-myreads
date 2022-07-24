@@ -1,8 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Shelves from "./Shelves";
 import AddBookButton from "./AddBookButton";
-import { useState } from "react";
-import PropTypes from "prop-types";
 
 const ShelvesView = ({ change, books} ) => {
 
