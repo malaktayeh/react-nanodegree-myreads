@@ -18,7 +18,7 @@ const SearchInput = ({ searchInput, setSearchInput }) => {
 
 SearchInput.propTypes = {
     searchInput: PropTypes.string,
-    setSearchInput: PropTypes.func.isRequired
+    setSearchInput: PropTypes.string
 }
 
 export default SearchInput;

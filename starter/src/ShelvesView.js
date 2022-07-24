@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import Shelves from "./Shelves";
 import AddBookButton from "./AddBookButton";
 
-const ShelvesView = ({ change, books} ) => {
+const ShelvesView = ({ change, books }) => {
 
     return(
         <div className="list-books">
@@ -17,8 +17,8 @@ const ShelvesView = ({ change, books} ) => {
 }
 
 ShelvesView.propTypes = {
-    books: PropTypes.array,
-    change: PropTypes.func
+    books: PropTypes.array.isRequired,
+    change: PropTypes.func.isRequired
 }
 
 export default ShelvesView;

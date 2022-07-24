@@ -6,8 +6,7 @@ import Books from "./Books";
 
 import * as BooksAPI from "./BooksAPI";
 
-const SearchView = ({ change }) => {
-    const [searchInput, setSearchInput] = useState('');
+const SearchView = ({ change, searchInput, setSearchInput }) => {
     const [searchResults, setSearchResults] = useState([]);
     const [loading, setLoading] = useState(false);
 
@@ -32,26 +31,27 @@ const SearchView = ({ change }) => {
     }, [searchInput]);
 
     return(
-            <div className="search-books">
-                <BookSearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
-                    <div className="search-books-results">
-                        {console.log(loading)}
-                        {console.log(searchResults)}
-                        <ol className="books-grid">         
-                            {
-                            loading ? 
-                                <p>Loading . . .</p> :
-                                searchResults.map(book => <Books book={book} key={book.id} change={change} /> )
-                            }
-                            
-                        </ol>
-                    </div>
-                </div>
+        <div className="search-books">
+            <BookSearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
+            <div className="search-books-results">
+                <ol className="books-grid">         
+                    {
+                    loading ? 
+                        <p>Loading . . .</p> :
+                        searchResults.length === 0 ? <p>No results found. Try searching for something else.</p> :
+                        searchResults.map(book => <Books book={book} change={change} /> )
+                    }
+                    
+                </ol>
+            </div>
+        </div>
     )
 }
 
 SearchView.propTypes = {
-    change: PropTypes.func
+    change: PropTypes.func.isRequired,
+    searchInput: PropTypes.string,
+    setSearchInput: PropTypes.func.isRequired
 } 
 
 export default SearchView;

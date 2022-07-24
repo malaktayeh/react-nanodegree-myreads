@@ -13,14 +13,14 @@ const BookSearchBar = ({ searchInput, setSearchInput }) => {
             >
                 Close
             </Link>
-            <SearchInput searchInput={searchInput} setSearchInput={setSearchInput}/>
+            <SearchInput searchInput={searchInput} setSearchInput={setSearchInput} />
       </div>
     )
 }
 
 BookSearchBar.propTypes = {
     searchInput: PropTypes.string,
-    setSearchInput: PropTypes.func.isRequired
+    setSearchInput: PropTypes.string
 }
 
 
