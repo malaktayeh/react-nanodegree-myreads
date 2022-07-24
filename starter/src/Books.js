@@ -21,8 +21,8 @@ const Books = ({ book, change }) => {
                         </a>
                         <BookDropdown book={book} change={change}/>
                     </div>
-                <div className="book-title">{book.title}</div>
-                <div className="book-authors">{book.authors.length > 1 ? (book.authors.map(auth => `${auth}. `)) : `${book.authors}.`}</div>
+                <div className="book-title">{book.title ? book.title : ""}</div>
+                <div className="book-authors">{book.authors !== undefined && book.authors.length > 1 ? (book.authors.map(auth => `${auth}. `)) : `${book.authors}.`}</div>
                 </div>
             </li>
         </>
@@ -30,7 +30,7 @@ const Books = ({ book, change }) => {
 } 
 
 Books.protoTypes = {
-    book: PropTypes.object,
+    book: PropTypes.object.isRequired,
     change: PropTypes.func
   }  
 

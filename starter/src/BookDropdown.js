@@ -25,8 +25,8 @@ const BookDropdown = ({ book, change }) => {
 }
 
 BookDropdown.protoTypes = {
-    book: PropTypes.object,
-    change: PropTypes.func
+    book: PropTypes.object.isRequired,
+    change: PropTypes.func.isRequired
   }  
 
 export default BookDropdown; 
