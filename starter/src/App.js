@@ -61,14 +61,21 @@ function App() {
           exact path="/" 
           element={
             // Bookshelves view with respective books
-            <ShelvesView books={books} change={changeToBooks} />
+            <ShelvesView 
+              books={books} 
+              change={changeToBooks} 
+            />
         }/>
 
         <Route 
           path="/search" 
           element={
             // Show search book view
-            <SearchView change={changeToBooks} searchInput={searchInput} setSearchInput={setSearchInput} />
+            <SearchView 
+              change={changeToBooks} 
+              searchInput={searchInput} 
+              setSearchInput={setSearchInput} 
+            />
         }/>
       </Routes>
 

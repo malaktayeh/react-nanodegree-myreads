@@ -19,7 +19,7 @@ const Books = ({ book, change }) => {
                         }}
                         ></div>
                     </a>
-                    <BookDropdown book={book} change={change}/>
+                    <BookDropdown book={book} change={change} />
                 </div>
                 <div className="book-title">{book.title ? book.title : ""}</div>
                 <div className="book-authors">{book.authors !== undefined && book.authors.length > 1 ? (book.authors.map(auth => `${auth}. `)) : `${book.authors}.`}</div>

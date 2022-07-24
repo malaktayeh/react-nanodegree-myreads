@@ -10,7 +10,7 @@ const Shelves = ({ books, change }) => {
           <div className="bookshelf-books">
             <ol className="books-grid">                    
               {books.filter(book => book.shelf === "currentlyReading").map(book => 
-                <Books book={book} change={change} />      
+                <Books key={book.id} book={book} change={change} />      
               )}
             </ol>
           </div>
@@ -20,7 +20,7 @@ const Shelves = ({ books, change }) => {
         <div className="bookshelf-books">
           <ol className="books-grid">
           {books.filter(book => book.shelf === "wantToRead").map(book => 
-                <Books book={book} change={change}  />
+                <Books key={book.id} book={book} change={change}  />
               )}
           </ol>
         </div>
@@ -30,7 +30,7 @@ const Shelves = ({ books, change }) => {
         <div className="bookshelf-books">
           <ol className="books-grid">
           {books.filter(book => book.shelf === "read").map(book => 
-                <Books book={book} change={change} />
+                <Books key={book.id} book={book} change={change} />
               )}
           </ol>
         </div>

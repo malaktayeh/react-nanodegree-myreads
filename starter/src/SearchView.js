@@ -37,16 +37,15 @@ const SearchView = ({ change, searchInput, setSearchInput }) => {
         <div className="search-books">
             <BookSearchBar searchInput={searchInput} setSearchInput={setSearchInput}/>
             <div className="search-books-results">
-                {console.log('input: ' + searchInput)}
                 <ol className="books-grid">         
                     {
                     loading ? 
-                        <p>Loading . . .</p> 
+                        <li>Loading . . .</li> 
                         :
                         searchResults.length === 0 || searchInput === "" ?
-                            <p>No results found. Try searching for something else.</p> 
+                            <li>No results found. Try searching for something else.</li> 
                             :
-                            searchResults.map(book => <Books book={book} change={change} /> )
+                            searchResults.map(book => <Books key={book.id} book={book} change={change} /> )
 
                     }
                     
@@ -58,7 +57,7 @@ const SearchView = ({ change, searchInput, setSearchInput }) => {
 
 SearchView.propTypes = {
     change: PropTypes.func.isRequired,
-    searchInput: PropTypes.string,
+    searchInput: PropTypes.string.isRequired,
     setSearchInput: PropTypes.func.isRequired
 } 
 
