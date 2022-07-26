@@ -37,17 +37,13 @@ function App() {
     for (let i = 0, l = books.length; i < l; i++) {
         if (book.id === books[i].id) {
           isBookOnShelf = true;
+          locationIntheBooksArray = i;
           break;
         }
     }
 
     // book on shelf -> change shelf to selected shelf locally
-    if (isBookOnShelf) {
-      // eslint-disable-next-line array-callback-return
-      locationIntheBooksArray = books.findIndex(el => {
-        if (el.id !== book.id) locationIntheBooksArray++;
-        else return true;
-      })
+    if (isBookOnShelf !== undefined) {
       newBooks[locationIntheBooksArray] = newBook;
       setBooks(newBooks);
     }
@@ -84,6 +80,12 @@ function App() {
               setSearchResults={setSearchResults}
             />
         }/>
+
+        
+        <Route 
+          path="*" 
+          element={<div>Page not found.</div>} 
+        />
       </Routes>
 
     </div>
