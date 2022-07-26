@@ -1,20 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { useLocation } from 'react-router-dom'
-
-import * as BooksAPI from "./BooksAPI";
 
 const BookDropdown = ({ book, change }) => {
-    const location = useLocation();
-
+    console.log(book.shelf)
     return(
         <div className="book-shelf-changer">
             <select 
-                value={location.pathname === "/search" ? "none" : book.shelf } 
-                onChange={(e) => {
-                    BooksAPI.update(book, e.target.value);
-                    change(book, e.target.value)}
-                }>
+                value={book.shelf ? book.shelf : "none" } 
+                onChange={(e) => change(book, e.target.value)}
+                >
                 <option disabled>
                     Move to...
                 </option>

@@ -9,6 +9,7 @@ import * as BooksAPI from "./BooksAPI";
 function App() {
   const [books, setBooks] = useState([]);
   const [searchInput, setSearchInput] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
 
   // get books on shelves upon first render
   useEffect(() => {
@@ -20,9 +21,13 @@ function App() {
     getBooks();
   }, []);
 
+
   const changeToBooks = (book, newShelf) => {
     // check if this book already is on one of our shelves, or if it a new book that needs to be added
     let newBook = book;
+    
+    BooksAPI.update(book, newShelf);
+
     let newBooks = [...books];
     newBook.shelf = newShelf;
 
@@ -36,7 +41,7 @@ function App() {
         }
     }
 
-    // book on shelf -> change shelf to selected shelf
+    // book on shelf -> change shelf to selected shelf locally
     if (isBookOnShelf) {
       // eslint-disable-next-line array-callback-return
       locationIntheBooksArray = books.findIndex(el => {
@@ -46,7 +51,7 @@ function App() {
       newBooks[locationIntheBooksArray] = newBook;
       setBooks(newBooks);
     }
-    // new book -> add to respective shelf
+    // new book -> add to respective shelf locally
     else {
       newBooks.push(newBook);
       setBooks(newBooks);
@@ -75,6 +80,8 @@ function App() {
               change={changeToBooks} 
               searchInput={searchInput} 
               setSearchInput={setSearchInput} 
+              searchResults={searchResults}
+              setSearchResults={setSearchResults}
             />
         }/>
       </Routes>

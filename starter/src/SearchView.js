@@ -6,8 +6,7 @@ import Books from "./Books";
 
 import * as BooksAPI from "./BooksAPI";
 
-const SearchView = ({ change, searchInput, setSearchInput }) => {
-    const [searchResults, setSearchResults] = useState([]);
+const SearchView = ({ change, searchInput, setSearchInput, searchResults, setSearchResults}) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -31,7 +30,7 @@ const SearchView = ({ change, searchInput, setSearchInput }) => {
         }
 
         setLoading(false)
-    }, [searchInput]);
+    }, [searchInput, setSearchResults]);
 
     return(
         <div className="search-books">
@@ -58,7 +57,9 @@ const SearchView = ({ change, searchInput, setSearchInput }) => {
 SearchView.propTypes = {
     change: PropTypes.func.isRequired,
     searchInput: PropTypes.string.isRequired,
-    setSearchInput: PropTypes.func.isRequired
+    setSearchInput: PropTypes.func.isRequired,
+    searchResults: PropTypes.array.isRequired,
+    setSearchResults: PropTypes.func.isRequired
 } 
 
 export default SearchView;
