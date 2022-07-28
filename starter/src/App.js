@@ -73,6 +73,7 @@ function App() {
           element={
             // Show search book view
             <SearchView 
+              books={books}
               change={changeToBooks} 
               searchInput={searchInput} 
               setSearchInput={setSearchInput} 

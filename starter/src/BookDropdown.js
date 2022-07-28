@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const BookDropdown = ({ book, change }) => {
-    console.log(book.shelf)
+    
     return(
         <div className="book-shelf-changer">
             <select 

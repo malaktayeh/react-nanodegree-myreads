@@ -6,11 +6,12 @@ import Books from "./Books";
 
 import * as BooksAPI from "./BooksAPI";
 
-const SearchView = ({ change, searchInput, setSearchInput, searchResults, setSearchResults}) => {
+const SearchView = ({ books, change, searchInput, setSearchInput, searchResults, setSearchResults}) => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
         setLoading(true);
+        let result; 
 
         const getBooks = async () => {
             try {
@@ -21,16 +22,34 @@ const SearchView = ({ change, searchInput, setSearchInput, searchResults, setSea
                 if (typeof(res) === undefined) setSearchResults([]) 
                 else if (res.error) setSearchResults([]) 
                 // else save API data in state
-                else setSearchResults(res);
+                else {
+                    // before saving query results, check if any of the books are already on a shelf
+                    // if book is already on a shelf, add key value pair to result object
+                    result = res.map(foundBook => {
+                        return {
+                            description: foundBook.description,
+                            authors: foundBook.authors,
+                            id: foundBook.id,
+                            imageLinks: foundBook.imageLinks,
+                            infoLink: foundBook.infoLink,
+                            previewLink: foundBook.previewLink,
+                            shelf: books.find(book => book.id === foundBook.id) ? 
+                                books.find(book => book.id === foundBook.id).shelf : 
+                                "none",
+                            title: foundBook.title
+                        }
+                    })
+                    setSearchResults(result);
+                }
             } catch (err) {console.log(err.message)}
         };
 
-        if (searchInput !== "") {
+        if (searchInput.trim() !== "") {
             getBooks();
         }
 
         setLoading(false)
-    }, [searchInput, setSearchResults]);
+    }, [books, searchInput, setSearchResults]);
 
     return(
         <div className="search-books">
@@ -55,6 +74,7 @@ const SearchView = ({ change, searchInput, setSearchInput, searchResults, setSea
 }
 
 SearchView.propTypes = {
+    books: PropTypes.array.isRequired,
     change: PropTypes.func.isRequired,
     searchInput: PropTypes.string.isRequired,
     setSearchInput: PropTypes.func.isRequired,
