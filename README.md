@@ -4,11 +4,7 @@ This is project number 1 of the [Udacity React Nanodegree](https://www.udacity.c
 
 ![Project Screenshot](./myreads.PNG)
 
-MyReads is an app with two UI views. The main view displays books on three different shelfs (currently reading, want to read, read). Here the 
-end user can change the book to a different shelf, or even remove the book from all shelves. Furthermore, the user can search for new books 
-by clicking on the green add button, which opens a search view of the app. Here, the user can enter a search query and the app will pull results 
-using the [BooksAPI](./starter/src/BooksAPI.js). The user can then click on the green dropdown button to add or change the shelf the book is 
-on (e.g., a book that is on the "Read" bookshelf can be changed to a different shelf.)
+MyReads is an app with two UI views. The main view displays books on three different shelves (currently reading, want to read, read). Here the end user can change the book to a different shelf or even remove the book from all shelves. Furthermore, the user can search for new books by clicking on the green add button, which opens a search view of the app. The user can enter a search query here, and the app will pull results using the [BooksAPI](./starter/src/BooksAPI.js). The user can then click on the green dropdown button to add or change the book's shelf (e.g., the user can change a book on the "Read" bookshelf to a different shelf.)
 
 ## Running the code
 
